@@ -1,16 +1,20 @@
-import heapq
+import sys
+from heapq import *
 
-class MaxHeap(object):
-    def __init__(self, x):
-        self.heap = [-e for e in x]
-        heapq.heapify(self.heap)
-    def push(self, value):
-        heapq.heappush(self.heap, -value)
-    def pop(self):
-        return -heapq.heappop(self.heap)
+heaplow=[]
+heaphigh=[]
 
-minheap=[]
-
+runningtotal=0
 for number in map(int,file(sys.argv[1],"r")):
-	heappush(minheap, number)
-	print "Adding %s; smallest number is %s" % (number,minheap[0])
+	if len(heaplow)==0 or number < -heaplow[0]:
+		heappush(heaplow,-number)
+	else:
+		heappush(heaphigh,number)
+	while len(heaphigh)>len(heaplow):
+		heappush(heaplow, -heappop(heaphigh))
+	while len(heaplow)-1>len(heaphigh):
+		heappush(heaphigh, -heappop(heaplow))
+	runningtotal-=heaplow[0]
+	if runningtotal>9999:
+		runningtotal-=10000
+	print "Added %s; Current median %s; running total %s" % (number, -heaplow[0], runningtotal)
