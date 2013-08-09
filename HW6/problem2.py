@@ -9,3 +9,8 @@ class MaxHeap(object):
     def pop(self):
         return -heapq.heappop(self.heap)
 
+minheap=[]
+
+for number in map(int,file(sys.argv[1],"r")):
+	heappush(minheap, number)
+	print "Adding %s; smallest number is %s" % (number,minheap[0])
