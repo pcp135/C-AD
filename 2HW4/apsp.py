@@ -25,13 +25,13 @@ print "Built Graph..."
 print "Nodes: %s, Edges: %s" % (nodes,edges)
 
 #initialize
-A=dict()
+A=(dict(),dict())
 edges = graph.keys()
 for i in range(1,nodes+1):
-	A[(i,i,0)]=0
+	A[0][i]={i:0}
 for (i,j) in edges:
-	A[(i,j,0)]=graph[(i,j)]
+	A[0][i][j]=graph[(i,j)]
 print "Initialized..."			
-			
+
 #Main Loop
 print main_loop()
