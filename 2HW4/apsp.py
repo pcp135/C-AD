@@ -2,15 +2,20 @@ import sys
 
 def main_loop():
 	for k in range(1,nodes+1):
+		print "k: %s" % (k,)
 		A[k%2]=A[(k-1)%2]
 		for i in range(1,nodes+1):
 			if k in A[(k-1)%2][i].keys():
 				for j in A[(k-1)%2][k].keys():
 					if j not in A[k%2][i].keys() or A[(k-1)%2][i][k]+A[(k-1)%2][k][j]<A[k%2][i][j]:
 						A[k%2][i][j]=A[(k-1)%2][i][k]+A[(k-1)%2][k][j]
+			if A[k%2][i][i]<0:
+				return "Negative cycle detected"
 	return A[nodes%2]
 
 def report_min(B):
+	if type(B) is str:
+		return "Negative cycle detected"
 	min_path=(0,0)
 	min_length=999
 	for (tail,root) in B.iteritems():
