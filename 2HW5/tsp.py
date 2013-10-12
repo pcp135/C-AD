@@ -29,6 +29,6 @@ for m in range(1,num_cities):
 		S= set(i) | {0}
 		for j in S:
 			if j!=0:
-				A[(frozenset(S),j)] = min([A[(frozenset(S-{j}),k)]+EDs[j][k] for k in S if k!=j and (frozenset(S-{j}),k) in A.keys()])
+				A[(frozenset(S),j)] = min([A[(frozenset(S-{j}),k)]+EDs[j][k] for k in S if k!=j and EDs[j][k] < 20000 and (frozenset(S-{j}),k) in A.keys()])
 
 print int(min([A[(frozenset(range(num_cities)),j)]+EDs[0][j] for j in range(1,num_cities)]))
