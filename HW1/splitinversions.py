@@ -9,7 +9,7 @@ def countinversions(list,count):
 		C = []
 		for k in range(len(list)):
 			if A and B:
-				if A[0]<B[0]:
+				if A[0]<=B[0]:
 					C.append(A.pop(0))
 				else:
 					C.append(B.pop(0))
