@@ -13,6 +13,7 @@ N=int(input_list[0][0])
 nodes = ["".join(node) for node in input_list[1:]]
 edgesToJoin=[]
 for i in range(N):
+	print '{0:.4%}'.format(float(i)/N)
 	for j in range(N):
 		if hamdist(nodes[i],nodes[j])<3:
 			edgesToJoin.append((i,j))
