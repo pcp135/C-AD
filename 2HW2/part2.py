@@ -1,5 +1,4 @@
 import sys
-from collections import defaultdict
 
 def hamdist(str1, str2):
 	diffs = 0
@@ -20,7 +19,7 @@ for i in range(N):
 
 print "Finished calcing distances"
 print len(edgesToJoin), "Edges to join"
-nodes = [i for i in range(N)]
+nodes = range(N)
 for edge in edgesToJoin:
 	new_label,old_label=nodes[edge[0]],nodes[edge[1]]
 	if new_label!=old_label:
